@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Climate Control Test Zone C",
+    "type": "climate_control",
+    "zone": "C",
+    "startTime": "2025-06-08T07:00:00",
+    "endTime": "2025-06-08T07:30:00",
+    "priority": "medium",
+    "status": "in_progress",
+    "carbonOptimize": false,
+    "weatherAdapt": true,
+    "key": "Climate Control Test Zone C_C_2025-06-08T07:00:00"
+  },
+  {
+    "name": "Fertilization Operation Zone C",
+    "type": "fertilizing",
+    "zone": "C",
+    "startTime": "2025-06-08T11:00:00",
+    "endTime": "2025-06-08T13:00:00",
+    "priority": "low",
+    "status": "in_progress",
+    "carbonOptimize": false,
+    "weatherAdapt": false,
+    "key": "Fertilization Operation Zone C_C_2025-06-08T11:00:00"
+  },
+  {
+    "name": "Crop Harvesting Zone E",
+    "type": "harvesting",
+    "zone": "E",
+    "startTime": "2025-06-08T06:00:00",
+    "endTime": "2025-06-08T07:00:00",
+    "priority": "low",
+    "status": "in_progress",
+    "carbonOptimize": true,
+    "weatherAdapt": false,
+    "key": "Crop Harvesting Zone E_E_2025-06-08T06:00:00"
+  },
+  {
+    "name": "Automatic Irrigation Zone F",
+    "type": "irrigation",
+    "zone": "F",
+    "startTime": "2025-06-08T06:00:00",
+    "endTime": "2025-06-08T07:30:00",
+    "priority": "high",
+    "status": "scheduled",
+    "carbonOptimize": false,
+    "weatherAdapt": false,
+    "key": "Automatic Irrigation Zone F_F_2025-06-08T06:00:00"
+  },
+  {
+    "name": "Monitoring Patrol Zone F",
+    "type": "monitoring",
+    "zone": "F",
+    "startTime": "2025-06-08T07:30:00",
+    "endTime": "2025-06-08T08:30:00",
+    "priority": "medium",
+    "status": "in_progress",
+    "carbonOptimize": true,
+    "weatherAdapt": true,
+    "key": "Monitoring Patrol Zone F_F_2025-06-08T07:30:00"
+  },
+  {
+    "name": "Monitoring Patrol Zone F",
+    "type": "monitoring",
+    "zone": "F",
+    "startTime": "2025-06-08T11:00:00",
+    "endTime": "2025-06-08T13:00:00",
+    "priority": "urgent",
+    "status": "scheduled",
+    "carbonOptimize": false,
+    "weatherAdapt": false,
+    "key": "Monitoring Patrol Zone F_F_2025-06-08T11:00:00"
+  },
+  {
+    "name": "Pest and Disease Inspection Zone D",
+    "type": "pest_control",
+    "zone": "D",
+    "startTime": "2025-06-08T07:30:00",
+    "endTime": "2025-06-08T09:30:00",
+    "priority": "urgent",
+    "status": "in_progress",
+    "carbonOptimize": false,
+    "weatherAdapt": true,
+    "key": "Pest and Disease Inspection Zone D_D_2025-06-08T07:30:00"
+  },
+  {
+    "name": "Pest and Disease Inspection Zone B",
+    "type": "pest_control",
+    "zone": "B",
+    "startTime": "2025-06-08T06:00:00",
+    "endTime": "2025-06-08T06:30:00",
+    "priority": "urgent",
+    "status": "scheduled",
+    "carbonOptimize": false,
+    "weatherAdapt": false,
+    "key": "Pest and Disease Inspection Zone B_B_2025-06-08T06:00:00"
+  },
+  {
+    "name": "Seeding and Seedling Cultivation Zone D",
+    "type": "seeding",
+    "zone": "D",
+    "startTime": "2025-06-08T08:30:00",
+    "endTime": "2025-06-08T09:00:00",
+    "priority": "low",
+    "status": "scheduled",
+    "carbonOptimize": true,
+    "weatherAdapt": true,
+    "key": "Seeding and Seedling Cultivation Zone D_D_2025-06-08T08:30:00"
+  },
+  {
+    "name": "Seeding and Seedling Cultivation Zone C",
+    "type": "seeding",
+    "zone": "C",
+    "startTime": "2025-06-08T06:30:00",
+    "endTime": "2025-06-08T07:00:00",
+    "priority": "urgent",
+    "status": "scheduled",
+    "carbonOptimize": true,
+    "weatherAdapt": false,
+    "key": "Seeding and Seedling Cultivation Zone C_C_2025-06-08T06:30:00"
+  }
+]

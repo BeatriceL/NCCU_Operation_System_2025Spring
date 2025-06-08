@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farm OS - 主儀表板</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+    <!-- 頂部導航欄 -->
+    <div class="top-bar">
+        <div class="left-nav">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <h1 style="font-size: 20px; font-weight: 600; color: #059669;">🌱 Smart Farm OS</h1>
+        </div>
+        <div class="right-nav">
+            <div class="status-item" onclick="showWeatherChart()">
+                <span class="weather-icon">☀️</span>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">28°C</div>
+                    <div style="font-size: 12px; color: #6b7280;">Sunny · Humidity 65%</div>
+                </div>
+            </div>
+            <div class="status-item" onclick="showPowerChart()">
+                <span class="power-icon">⚡</span>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">2.3 kWh</div>
+                    <div style="font-size: 12px; color: #6b7280;">Today's Power Consumption</div>
+                </div>
+            </div>
+            <div class="status-item" onclick="showSensorChart()">
+                <span class="sensor-icon">📊</span>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">26°C · 68%</div>
+                    <div style="font-size: 12px; color: #6b7280;">Average Sensor Value</div>
+                </div>
+            </div>
+            <div class="status-item" onclick="showTaskChart()">
+                <span class="task-icon">📋</span>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">5 / 12</div>
+                    <div style="font-size: 12px; color: #6b7280;">In Progress Tasks</div>
+                </div>
+            </div>
+            <div class="status-item" onclick="showCarbonChart()">
+                <span class="carbon-icon">🌿</span>
+                <div>
+                    <div style="font-size: 14px; font-weight: 600;">56%</div>
+                    <div style="font-size: 12px; color: #6b7280;">Carbon Emission Achievement Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主內容區域 -->
+    <div class="main-content">
+        <!-- 農場熱點地圖 -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">🗺️ Farm Zone Monitoring</h2>
+                <span class="refresh-time">2 分鐘前更新</span>
+            </div>
+            <div class="farm-map">
+                <div class="greenhouse-zone" onclick="showZoneDetails('A')">
+                    <div class="zone-header">
+                        <span class="zone-name">Greenhouse A</span>
+                        <div class="status-dot status-ok"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>25°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Humidity:</span>
+                            <span>72%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Soil:</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>CO₂:</span>
+                            <span>420ppm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="greenhouse-zone" onclick="showZoneDetails('B')">
+                    <div class="zone-header">
+                        <span class="zone-name">Greenhouse B</span>
+                        <div class="status-dot status-warning"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>29°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Humidity:</span>
+                            <span>58%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Soil:</span>
+                            <span>62%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>CO₂:</span>
+                            <span>380ppm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="greenhouse-zone" onclick="showZoneDetails('C')">
+                    <div class="zone-header">
+                        <span class="zone-name">Greenhouse C</span>
+                        <div class="status-dot status-ok"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>26°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Humidity:</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Soil:</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>CO₂:</span>
+                            <span>410ppm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="greenhouse-zone" onclick="showZoneDetails('D')">
+                    <div class="zone-header">
+                        <span class="zone-name">Open Field Area D</span>
+                        <div class="status-dot status-ok"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>28°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Humidity:</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Soil:</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Light:</span>
+                            <span>850W/m²</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="greenhouse-zone" onclick="showZoneDetails('E')">
+                    <div class="zone-header">
+                        <span class="zone-name">Hydroponic Area E</span>
+                        <div class="status-dot status-error"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>22°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>pH:</span>
+                            <span>6.2</span>
+                        </div>
+                        <div class="data-item">
+                            <span>EC:</span>
+                            <span>1.8</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Dissolved Oxygen:</span>
+                            <span>5.2mg/L</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="greenhouse-zone" onclick="showZoneDetails('F')">
+                    <div class="zone-header">
+                        <span class="zone-name">Storage Area F</span>
+                        <div class="status-dot status-ok"></div>
+                    </div>
+                    <div class="zone-data">
+                        <div class="data-item">
+                            <span>Temp:</span>
+                            <span>18°C</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Humidity:</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Inventory:</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="data-item">
+                            <span>Ventilation:</span>
+                            <span>Normal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 任務甘特圖 -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">📊 Task Scheduling Management</h2>
+                <button id="autoOptimizeBtn" onclick="optimizeSchedule()" class="auto-btn">
+                <span class="icon">⚙️</span>
+                Automatic Schedule Optimization
+                </button>
+
+                <span class="refresh-time">即時更新</span>
+            </div>
+            <div class="gantt-container">
+                <div class="gantt-header">
+                    <div>Task Name</div>
+                    <div>Timeline (06:00 - 18:00)</div>
+                </div>
+            </div>
+            <button class="add-task-btn" onclick="showTaskModal()">+</button>
+        </div>
+
+        <!-- 碳排儀表圖 -->
+         <div class="dashboard-card">
+  <div class="card-header">
+    <h2 class="card-title">🌿 Carbon Emission Monitoring</h2>
+    <span class="refresh-time">--</span>
+  </div>
+  <div class="carbon-content">
+    <div class="gauge-container">
+      <div class="gauge-arc">
+        <div class="gauge-fill"></div>
+      </div>
+      <div class="gauge-text">--%</div>
+    </div>
+    <div class="carbon-stats">
+      <div class="stat-item">
+        <div class="stat-value carbon-today">--</div>
+        <div class="stat-label">Today's Carbon Emissions (kg CO₂)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value carbon-goal">--</div>
+        <div class="stat-label">Target (kg CO₂)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value carbon-diff">--</div>
+        <div class="stat-label">Compared to Yesterday (kg CO₂)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value carbon-days">--</div>
+        <div class="stat-label">Consecutive Target Achievement</div>
+      </div>
+    </div>
+    <div class="carbon-tip"></div>
+    <div class="carbon-trend"></div>
+  </div>
+</div>
+
+
+        <!-- 服務器監控 -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">💻 System Load Monitoring</h2>
+                <span class="refresh-time">5 秒前更新</span>
+            </div>
+            <div class="server-content">
+                <div class="server-metrics">
+                    <div class="metric-card cpu-metric">
+                        <div class="metric-value" style="color: #3b82f6;">45%</div>
+                        <div class="metric-label">CPU Usage</div>
+                    </div>
+                    <div class="metric-card ram-metric">
+                        <div class="metric-value" style="color: #10b981;">62%</div>
+                        <div class="metric-label">Memory Usage</div>
+                    </div>
+                    <div class="metric-card network-metric">
+                        <div class="metric-value" style="color: #f59e0b;">23 Mbps</div>
+                        <div class="metric-label">Network Traffic</div>
+                    </div>
+                    <div class="metric-card users-metric">
+                        <div class="metric-value" style="color: #8b5cf6;">8</div>
+                        <div class="metric-label">Active Users</div>
+                    </div>
+                </div>
+                <div class="load-indicator">
+                    <div class="load-wave"></div>
+                </div>
+                <div style="margin-top: 16px; font-size: 14px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>System Status:</span>
+                        <span style="color: #22c55e; font-weight: 600;">✅ Normal Operation</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Last Reboot:</span>
+                        <span style="color: #6b7280;">3 days 2 hours ago</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Warning Threshold:</span>
+                        <span style="color: #6b7280;">CPU: 80% | RAM: 85%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Disk Usage:</span>
+                        <span style="color: #6b7280;">67% (2.1TB / 3.2TB)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Average Response Time:</span>
+                        <span style="color: #22c55e;">120ms</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Error Rate:</span>
+                        <span style="color: #22c55e;">0.02%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 區域詳情彈出視窗 -->
+    <div id="zoneModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header" id="modalTitle">Greenhouse A - Detailed Information</div>
+            <div class="sensor-data" id="modalContent">
+                <!-- 動態內容將在此插入 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增任務彈窗 -->
+    <div id="taskModalOverlay" class="task-modal-overlay">
+        <div class="task-modal-container">
+            <!-- 彈窗頭部 -->
+            <div class="task-modal-header">
+                <h2 class="task-modal-title">
+                    <span>🌱</span>
+                    新增農場任務
+                </h2>
+                <p class="task-modal-subtitle">設定Automatic化任務排程，優化農場營運效率</p>
+                <div class="task-modal-close" onclick="closeTaskModal()"></div>
+            </div>
+
+            <!-- 彈窗內容 -->
+            <div class="task-modal-content">
+                <form class="task-form-grid">
+                    <!-- 基本資訊區塊 -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span>📋</span>
+                            基本資訊
+                        </h3>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                任務名稱<span class="form-required">*</span>
+                            </label>
+                            <input type="text" class="form-input" id="taskName" placeholder="例如：溫室Zone AAutomatic Irrigation" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    任務類型<span class="form-required">*</span>
+                                </label>
+                                <select class="form-select" id="taskType" required>
+                                    <option value="">請選擇任務類型</option>
+                                    <option value="irrigation">💧 灌溉作業</option>
+                                    <option value="monitoring">📡 監控巡檢</option>
+                                    <option value="maintenance">🔧 設備維護</option>
+                                    <option value="harvesting">🌾 收穫作業</option>
+                                    <option value="seeding">🌱 Seeding and Seedling Cultivation</option>
+                                    <option value="fertilizing">🌿 Fertilization Operation</option>
+                                    <option value="pest_control">🐛 病蟲害防治</option>
+                                    <option value="climate_control">🌡️ Environment調控</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">
+                                    執行區域<span class="form-required">*</span>
+                                </label>
+                                <select class="form-select" id="taskZone" required>
+                                    <option value="">請選擇執行區域</option>
+                                    <option value="greenhouse_a">🏠 溫室 A</option>
+                                    <option value="greenhouse_b">🏠 溫室 B</option>
+                                    <option value="greenhouse_c">🏠 溫室 C</option>
+                                    <option value="outdoor_d">🌞 Open Field Area D</option>
+                                    <option value="hydroponic_e">💧 Hydroponic Area E</option>
+                                    <option value="storage_f">📦 Storage Area F</option>
+                                    <option value="all_zones">🌐 全區域</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">任務Description</label>
+                            <textarea class="form-textarea" id="taskDescription"
+                                placeholder="詳細Description任務內容、注意事項、特殊需求等..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 時間設定區塊 -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span>⏰</span>
+                            時間設定
+                        </h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    開始時間<span class="form-required">*</span>
+                                </label>
+                                <input type="datetime-local" class="form-input" id="startTime" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">
+                                    結束時間<span class="form-required">*</span>
+                                </label>
+                                <input type="datetime-local" class="form-input" id="endTime" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Priority別區塊 -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span>🎯</span>
+                            Priority別與資源
+                        </h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Priority別</label>
+                            <div class="priority-grid">
+                                <div class="priority-option priority-low">
+                                    <input type="radio" id="priorityLow" name="priority" value="low">
+                                    <label for="priorityLow">🟢 低Priority</label>
+                                </div>
+                                <div class="priority-option priority-medium">
+                                    <input type="radio" id="priorityMedium" name="priority" value="medium" checked>
+                                    <label for="priorityMedium">🟡 中Priority</label>
+                                </div>
+                                <div class="priority-option priority-high">
+                                    <input type="radio" id="priorityHigh" name="priority" value="high">
+                                    <label for="priorityHigh">🟠 高Priority</label>
+                                </div>
+                                <div class="priority-option priority-urgent">
+                                    <input type="radio" id="priorityUrgent" name="priority" value="urgent">
+                                    <label for="priorityUrgent">🔴 緊急處理</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">預估耗電量 (kWh)</label>
+                            <input type="number" class="form-input" id="powerConsumption" placeholder="0.0" step="0.1"
+                                min="0">
+                        </div>
+                    </div>
+
+                    <!-- 進階選項區塊 -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span>⚙️</span>
+                            進階選項
+                        </h3>
+
+                        <div class="form-checkbox-group">
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="autoRepeat">
+                                <label class="form-checkbox-label" for="autoRepeat">
+                                    🔄 設為重複任務（每日相同時間Automatic執行）
+                                </label>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="carbonOptimize">
+                                <label class="form-checkbox-label" for="carbonOptimize">
+                                    🌿 ActivateCarbon Emission Optimization（系統Automatic調整Execution Time以降低碳排放）
+                                </label>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="weatherAdapt">
+                                <label class="form-checkbox-label" for="weatherAdapt">
+                                    🌤️ Weather Adaptive（根據天氣預報Automatic調整任務時間）
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 彈窗底部按鈕 -->
+            <div class="task-modal-footer">
+                <button type="button" class="btn btn-cancel" onclick="closeTaskModal()">
+                    取消
+                </button>
+                <button type="button" class="btn btn-save" onclick="saveTask()">
+                    ✅ 新增任務
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- topbar的彈窗顯示 -->
+    <div id="weatherModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('weatherModal')">&times;</button>
+            <div class="chart-card" id="weatherCard">
+                <!-- 天氣分析卡片 -->
+                <div class="chart-header">
+                    <div class="chart-title">
+                        🌤️ Weather Monitoring and Analysis
+                    </div>
+                    <div class="chart-value">28°C</div>
+                </div>
+
+                <div class="control-panel">
+                    <button class="control-btn active" onclick="switchWeatherView('24h')">24 Hours</button>
+                    <button class="control-btn" onclick="switchWeatherView('7d')">7 Days</button>
+                    <button class="control-btn" onclick="switchWeatherView('30d')">30 Days</button>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">65%</div>
+                        <div class="stat-label">Average Humidity</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15m/s</div>
+                        <div class="stat-label">Wind Speed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1013</div>
+                        <div class="stat-label">Air Pressure hPa</div>
+                    </div>
+                </div>
+
+                <div class="suggestions-section">
+                    <div class="suggestion-title">💡 AI Recommendation</div>
+                    <div class="suggestion-item">• The temperature is expected to rise after 3:00 PM. It is recommended to activate the cooling system in advance.</div>
+                    <div class="suggestion-item">• Humidity is moderate, suitable for outdoor operations.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="powerModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('powerModal')">&times;</button>
+            <div class="chart-card" id="powerCard">
+                <!-- 用電分析卡片 -->
+                <div class="chart-header">
+                    <div class="chart-title">
+                        ⚡ Power Consumption Analysis
+                    </div>
+                    <div class="chart-value">2.3kWh</div>
+                </div>
+
+                <div class="control-panel">
+                    <button class="control-btn active" onclick="switchPowerView('today')">Today</button>
+                    <button class="control-btn" onclick="switchPowerView('week')">This Week</button>
+                    <button class="control-btn" onclick="switchPowerView('month')">This Month</button>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="powerChart"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">-15%</div>
+                        <div class="stat-label">Compared to Yesterday</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">0.8kW</div>
+                        <div class="stat-label">Peak Power</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$156</div>
+                        <div class="stat-label">This Month's Electricity Bill</div>
+                    </div>
+                </div>
+
+                <div class="suggestions-section">
+                    <div class="suggestion-title">🧠 Energy Saving Suggestions</div>
+                    <div class="suggestion-item">• Adjusting irrigation tasks to off-peak hours could save 15% on electricity costs.</div>
+                    <div class="suggestion-item">• It is recommended to reduce the brightness of the LED Lighting system after 10:00 PM.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sensorModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('sensorModal')">&times;</button>
+            <div class="chart-card" id="sensorCard">
+                <!-- 感測器分析卡片 -->
+                <div class="chart-header">
+                    <div class="chart-title">
+                        📊 Sensor Data Analysis
+                    </div>
+                    <div class="chart-value">26°C</div>
+                </div>
+
+                <div class="sensor-map">
+                    <div class="sensor-zone" style="top: 20px; left: 20px;" onclick="showZoneDetail('A')">
+                        <div class="zone-name">Greenhouse A</div>
+                        <div class="zone-temp">25°C</div>
+                    </div>
+                    <div class="sensor-zone warning" style="top: 20px; right: 20px;" onclick="showZoneDetail('B')">
+                        <div class="zone-name">Greenhouse B</div>
+                        <div class="zone-temp">29°C</div>
+                    </div>
+                    <div class="sensor-zone" style="bottom: 80px; left: 20px;" onclick="showZoneDetail('C')">
+                        <div class="zone-name">Greenhouse C</div>
+                        <div class="zone-temp">26°C</div>
+                    </div>
+                    <div class="sensor-zone" style="bottom: 80px; right: 20px;" onclick="showZoneDetail('D')">
+                        <div class="zone-name">Open Field Area D</div>
+                        <div class="zone-temp">28°C</div>
+                    </div>
+                    <div class="sensor-zone error" style="bottom: 20px; left: 50%; transform: translateX(-50%);"
+                        onclick="showZoneDetail('E')">
+                        <div class="zone-name">Hydroponic Area E</div>
+                        <div class="zone-temp">22°C</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="sensorChart"></canvas>
+                </div>
+
+                <div class="alerts-section">
+                    <div class="alert-title">⚠️ Abnormal Alert</div>
+                    <div class="alert-item">• Hydroponic Area E temperature is low; please check the heating system.</div>
+                    <div class="alert-item">• Greenhouse B humidity is too high; it is recommended to enhance ventilation.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('taskModal')">&times;</button>
+            <div class="chart-card" id="taskCard">
+                <!-- 任務分析卡片 -->
+                <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 class="card-title" style="margin: 0;">
+                        📝 Task Execution Analysis
+                    </h2>
+                    <span id="taskChartCount" style="font-weight: 600; color: #059669; font-size: 18px;">0 / 0</span>
+                </div>
+</div>
+
+            <div class="chart-container">
+                <canvas id="taskChart"></canvas>
+                </div>
+
+                <div class="task-progress">
+                    <div class="task-item">
+                        <span class="task-name">🚿 Automatic Irrigation Area A</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <span class="task-name">📡 Sensor Monitoring</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <span class="task-name">🔧 Equipment Maintenance Check</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <span class="task-name">🌾 Harvesting Operations Zone C</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suggestions-section">
+                    <div class="suggestion-title">📈 Efficiency Analysis</div>
+                    <div class="suggestion-item">• This week's task completion rate increased by 12%</div>
+                    <div class="suggestion-item">• It is recommended to schedule maintenance tasks during off-peak hours</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="carbonModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('carbonModal')">&times;</button>
+            <div class="chart-card" id="carbonCard">
+                <!-- 碳排分析卡片 -->
+                <div class="chart-header">
+                    <div class="chart-title">
+                        🌿 Carbon Emission Analysis
+                    </div>
+                    <div class="chart-value">56%</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="carbonChart"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">12.5kg</div>
+                        <div class="stat-label">Today's Emissions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">22.3kg</div>
+                        <div class="stat-label">Daily Target</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">-3.2kg</div>
+                        <div class="stat-label">Compared to Yesterday</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">7 Days</div>
+                        <div class="stat-label">Consecutive Days Achieved</div>
+                    </div>
+                </div>
+
+                <div class="suggestions-section">
+                    <div class="suggestion-title">💡 Carbon Reduction Suggestions</div>
+                    <div class="suggestion-item">• Delaying maintenance in the Hydroponic Area until evening could reduce emissions by 2.1kg CO₂.</div>
+                    <div class="suggestion-item">• Using LED Lighting could further reduce emissions by 15%.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

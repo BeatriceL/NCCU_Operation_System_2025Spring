@@ -1,0 +1,86 @@
+{
+  "A": {
+    "name": "Greenhouse A",
+    "status": "ok",
+    "data": {
+      "Temperature": "25.3°C",
+      "Humidity": "72%",
+      "Soil Humidity": "85%",
+      "CO₂ Concentration": "420 ppm",
+      "Sunlight Intensity": "650 W/m²",
+      "Air Pressure": "1013 hPa",
+      "Crop Status": "Good",
+      "Pest and Disease Risk": "Low"
+    }
+  },
+  "B": {
+    "name": "Greenhouse B",
+    "status": "warning",
+    "data": {
+      "Temperature": "29.1°C",
+      "Humidity": "58%",
+      "Soil Humidity": "62%",
+      "CO₂ Concentration": "380 ppm",
+      "Sunlight Intensity": "720 W/m²",
+      "Air Pressure": "1012 hPa",
+      "Crop Status": "Slightly Dry",
+      "Pest and Disease Risk": "Moderate"
+    }
+  },
+  "C": {
+    "name": "Greenhouse C",
+    "status": "ok",
+    "data": {
+      "Temperature": "26.8°C",
+      "Humidity": "75%",
+      "Soil Humidity": "88%",
+      "CO₂ Concentration": "410 ppm",
+      "Sunlight Intensity": "680 W/m²",
+      "Air Pressure": "1014 hPa",
+      "Crop Status": "Excellent",
+      "Pest and Disease Risk": "Low"
+    }
+  },
+  "D": {
+    "name": "Open Field Area D",
+    "status": "ok",
+    "data": {
+      "Temperature": "28.5°C",
+      "Humidity": "65%",
+      "Soil Humidity": "70%",
+      "Sunlight Intensity": "850 W/m²",
+      "Wind Speed": "2.3 m/s",
+      "Air Pressure": "1013 hPa",
+      "Crop Status": "Healthy",
+      "Pest and Disease Risk": "Low"
+    }
+  },
+  "E": {
+    "name": "Hydroponic Area E",
+    "status": "error",
+    "data": {
+      "Temperature": "22.1°C",
+      "pH Value": "6.2",
+      "EC Value": "1.8 ms/cm",
+      "Dissolved Oxygen Level": "5.2 mg/L",
+      "Nutrient Solution Concentration": "1200 ppm",
+      "Water Level": "85%",
+      "Crop Status": "pH Low",
+      "System Status": "Needs Adjustment"
+    }
+  },
+  "F": {
+    "name": "Storage Area F",
+    "status": "ok",
+    "data": {
+      "Temperature": "18.2°C",
+      "Humidity": "45%",
+      "Inventory Level": "85%",
+      "Ventilation Status": "Normal",
+      "Door Lock Status": "Locked",
+      "Lighting": "Automatic",
+      "Environment": "Suitable",
+      "Safety Status": "Normal"
+    }
+  }
+}
