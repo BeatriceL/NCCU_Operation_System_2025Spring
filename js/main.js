@@ -888,7 +888,7 @@ async function updateCarbonStats() {
     document.querySelector('.carbon-today').textContent = data.today.toFixed(1);
     document.querySelector('.carbon-goal').textContent = data.goal.toFixed(1);
     document.querySelector('.carbon-diff').textContent = (data.today - data.yesterday).toFixed(1);
-    document.querySelector('.carbon-days').textContent = `${data.daysMet}天`;
+    document.querySelector('.carbon-days').textContent = `${data.daysMet} Days`;
 
     document.querySelector('.carbon-tip').innerHTML = `
       <div style="background:#dcfce7;padding:12px;border-radius:8px;text-align:center;width:100%;">
